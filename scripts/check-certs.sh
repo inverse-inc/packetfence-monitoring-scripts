@@ -7,11 +7,11 @@ CERTS=()    # Will hold "due to expire" certificates
 
 # RADIUS certificates
 # Checks for 'certificate_file =' in '/usr/local/pf/raddb/mods-enabled/eap'
-files=($(awk '/certificate_file =/{print substr($0, index($0,$3))}' /usr/local/pf/raddb/mods-enabled/eap))
+files=($(awk '$1 !~ /^\#/ && /certificate_file =/{print substr($0, index($0,$3))}' /usr/local/pf/raddb/mods-enabled/eap))
 
 # HTTPd certificates
 # Checks for 'SSLCertificateFile' in '/usr/local/pf/var/conf/ssl-certificates.conf'
-files+=($(awk '/SSLCertificateFile/{print substr($0, index($0,$2))}' /usr/local/pf/var/conf/ssl-certificates.conf))
+files+=($(awk '$1  !~ /^\#/ && /SSLCertificateFile/{print substr($0, index($0,$2))}' /usr/local/pf/var/conf/ssl-certificates.conf))
 
 # Check for validity
 for i in "${files[@]}"
