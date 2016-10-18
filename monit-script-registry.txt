@@ -1,1 +1,3 @@
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/scripts/check-tmp.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/scripts/check-syslog.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/scripts/check-innodb-file-per-table.sh
