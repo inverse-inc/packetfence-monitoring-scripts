@@ -7,6 +7,6 @@ fi
 
 # Check for automatic splitbrain resolution configuration parameter
 if grep -qR "discard-secondary" /etc/drbd.d/; then
-    echo "DRBD seems to be configuration to automatically resolve splitbrain..."
+    echo "DRBD seems to be configured to automatically resolve splitbrain..."
     exit 1
 fi
