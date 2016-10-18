@@ -4,6 +4,8 @@ lowercase(){
     echo "$1" | sed "y/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/"
 }
 
+export -f lowercase
+
 osdetect(){
     OS=`lowercase \`uname\``
     KERNEL=`uname -r`
@@ -46,26 +48,28 @@ osdetect(){
             fi
             OS=`lowercase $OS`
             DistroBasedOn=`lowercase $DistroBasedOn`
-            readonly OS
-            readonly DIST
-            readonly DistroBasedOn
-            readonly PSUEDONAME
-            readonly REV
-            readonly KERNEL
-            readonly MACH
+            export OS
+            export DIST
+            export DistroBasedOn
+            export PSUEDONAME
+            export REV
+            export KERNEL
+            export MACH
         fi
 
     fi
 }
+
+export -f osdetect
 
 dbparams(){
     DB_USER=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{user}')
     DB_PWD=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{pass}')
     DB_NAME=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{db}')
     DB_HOST=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{host}')
-    readonly DB_USER
-    readonly DB_PWD
-    readonly DB_NAME
-    readonly DB_HOST
+    export DB_USER
+    export DB_PWD
+    export DB_NAME
+    export DB_HOST
 }
 
