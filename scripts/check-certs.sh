@@ -3,6 +3,7 @@
 
 # Will raise alert if certificate is no longer valid is less than a week (7 days)
 VALIDITY_THRESHOLD=7
+CERTS=()    # Will hold "due to expire" certificates
 
 # RADIUS certificates
 # Checks for 'certificate_file =' in '/usr/local/pf/raddb/mods-enabled/eap'
@@ -24,7 +25,15 @@ do
     daysofdifference=$(( daysofdifference / 86400 ))    # Convert difference to days (86400 seconds)
 
     if [ "$daysofdifference" -lt "$VALIDITY_THRESHOLD" ]; then
-        echo "Certificate '$i' is due to expire in less than '$VALIDITY_THRESHOLD' days."
-        exit 1
+        CERTS+=($i)
     fi
 done
+
+# Alert if needed
+if [ ${#CERTS[@]} -ne 0 ]; then
+    for i in "${CERTS[@]}"
+    do
+        echo "Certificate '$i' is due to expire in less than '$VALIDITY_THRESHOLD' days."
+    done
+    exit 1
+fi
