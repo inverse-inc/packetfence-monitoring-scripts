@@ -5,3 +5,4 @@ http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-inno
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-drbd-status.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-drbd-config.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-samba-machine-password-timeout.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-certs.sh
