@@ -1,8 +1,6 @@
 #!/bin/bash
 #fname:check-innodb_file_per_table.sh
 
-source ./functions.sh
-
 if ! [ -z "$(command -v mysql)" ]; then
     # check if MySQL or MariaDB is installed
     if mysql -V | grep -q "MariaDB"; then
