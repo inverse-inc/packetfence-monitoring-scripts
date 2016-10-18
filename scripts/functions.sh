@@ -73,3 +73,4 @@ dbparams(){
     export DB_HOST
 }
 
+export -f dbparams
