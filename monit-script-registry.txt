@@ -1,3 +1,5 @@
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-tmp.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-syslog.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-innodb-file-per-table.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-drbd-status.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-drbd-config.sh
