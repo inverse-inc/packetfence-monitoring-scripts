@@ -16,3 +16,5 @@ if [ ! $status -eq 1 ] ; then
     echo $drbd_output
     exit 1
 fi
+
+exit 0
