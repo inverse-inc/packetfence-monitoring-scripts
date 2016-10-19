@@ -4,7 +4,7 @@
 if ! [ -z "$(command -v mysql)" ]; then
     # check if MySQL or MariaDB is installed
     if mysql -V | grep -q "MariaDB"; then
-        SQL_ENGINE='mariadb'
+        SQL_ENGINE="mariadb"
     else
         SQL_ENGINE="mysqld"
     fi
