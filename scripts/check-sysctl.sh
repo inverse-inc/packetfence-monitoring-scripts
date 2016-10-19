@@ -15,3 +15,5 @@ if [ `perl -I/usr/local/pf/lib -Mpf::db -e 'print scalar(@pf::cluster::cluster_h
       exit 1
     fi
 fi
+
+exit 0
