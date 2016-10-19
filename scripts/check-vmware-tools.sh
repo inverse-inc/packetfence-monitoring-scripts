@@ -5,3 +5,5 @@ if ! which vmware-toolbox  ; then
   echo "VMware(R) Tools are not installed"
   exit 1
 fi
+
+exit 0
