@@ -4,7 +4,7 @@
 osdetect
 
 if [ $DistroBasedOn == "redhat" ]; then
-   if ! [ -z "$(dmesg |grep -i "Hypervisor detected")" ]; then
+   if ! [ -z "$(dmesg |grep -i 'Hypervisor detected')" ]; then
        # check if it's a VMWare Hypervisor
        if dmesg |grep -i "Hypervisor detected" | grep -q "VMware"; then
          # check if the VMware(R) Tools are installed
