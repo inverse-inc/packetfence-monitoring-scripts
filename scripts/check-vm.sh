@@ -8,7 +8,7 @@ if [ $DistroBasedOn == "redhat" ]; then
        # check if it's a VMWare Hypervisor
        if dmesg |grep -i "Hypervisor detected" | grep -q "VMware"; then
          # check if the VMware(R) Tools are installed
-         if ! which vmware-toolbox  ; then
+         if ! which vmware-toolbox-cmd  ; then
            echo "VMware(R) Tools are not installed."
            exit 1
          fi
