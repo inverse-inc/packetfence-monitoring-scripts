@@ -8,7 +8,7 @@ fi
 # Get DRBD status
 drbd_output=""
 status=$(egrep "(Primary\/Secondary|Secondary\/Primary)" /proc/drbd | egrep -o UpToDate/UpToDate | wc -l)
-cat /proc/drbd >> $drbd_output
+drbd_output=$(cat /proc/drbd)
 
 # Check if returned matching line is 1
 if [ ! $status -eq 1 ] ; then
