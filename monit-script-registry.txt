@@ -8,3 +8,4 @@ http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-samb
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-certs.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-vm.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-sysctl.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-backups.sh
