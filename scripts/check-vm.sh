@@ -13,7 +13,7 @@ if [ $DistroBasedOn == "redhat" ]; then
            exit 1
          fi
          # check if the RAM memory is reserved
-         if vmware-toolbox-cmd stat memres | grep -q "0 MB"; then
+        if [[ `vmware-toolbox-cmd stat memres | awk '{ print $1  }' ` < 1  ]]; then
            echo "The RAM memory is not reserved on the Virtual Machine."
            exit 1
          fi
