@@ -14,7 +14,11 @@ function check_backups {
   pattern="$1"
   find $BACKUP_DIR -name "$pattern" -ctime -1 -print0 | while IFS= read -r -d $'\0' backup; do
     size=`stat --printf="%s" $backup`
-    if [ $size -lt 1048576 ]; then
+    mtime=`stat --printf="%Y" $backup`
+    now=`date +%s`
+    # We only check backups that haven't been modified in the last 10 minutes
+    # We validate they are greater than 1MB
+    if [ $mtime -lt `expr $now - 600` ] && [ $size -lt 1048576 ]; then
       echo "Backup $backup is lower than 1MB. This is not normal."
       echo "1" > $ERROR_FILE
     fi
