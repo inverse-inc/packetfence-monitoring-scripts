@@ -6,8 +6,13 @@ VALIDITY_THRESHOLD=7
 CERTS=()    # Will hold "due to expire" certificates
 
 # RADIUS certificates
-# Checks for 'certificate_file =' in '/usr/local/pf/raddb/mods-enabled/eap'
-files=($(awk '$1 !~ /^\#/ && /certificate_file =/{print substr($0, index($0,$3))}' /usr/local/pf/raddb/mods-enabled/eap))
+# Checks for 'certificate_file =' in '/usr/local/pf/raddb/mods-enabled/eap' or in '/usr/local/pf/raddb/eap.conf'
+
+if [ -f /usr/local/pf/raddb/eap.conf ] ; then
+    files=($(awk '$1 !~ /^\#/ && /certificate_file =/{print substr($0, index($0,$3))}' /usr/local/pf/raddb/eap.conf))
+else
+    files=($(awk '$1 !~ /^\#/ && /certificate_file =/{print substr($0, index($0,$3))}' /usr/local/pf/raddb/mods-enabled/eap))
+fi
 
 # HTTPd certificates
 # Checks for 'SSLCertificateFile' in '/usr/local/pf/var/conf/ssl-certificates.conf'
