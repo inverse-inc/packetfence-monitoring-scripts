@@ -1,6 +1,10 @@
 #!/bin/bash
 #fname:check-logrotate.sh
 
+source /usr/local/pf/addons/monit/monitoring-scripts/setup.sh
+
+setup_test_env
+
 FILENAME="/etc/logrotate.d/packetfence"
 EXPECTED_OCTAL=644
 EXPECTED_OWNER="root.root"
@@ -33,10 +37,9 @@ fi
 
 # Check for PacketFence logrotate script update against maintenance branch
 # Checks the '/etc/logrotate.d/packetfence' file
-pf_version=($(awk '{ print $2 }' /usr/local/pf/conf/pf-release))
-maintenance_version="${pf_version%.*}"
-base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$maintenance_version"
+pfversion
 osdetect
+base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
 if [ $DistroBasedOn == "redhat" ] ; then
     latest=$(curl -s -L $base_url/addons/logrotate)
     current=`cat $FILENAME`
