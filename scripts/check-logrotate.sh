@@ -1,10 +1,6 @@
 #!/bin/bash
 #fname:check-logrotate.sh
 
-source /usr/local/pf/addons/monit/monitoring-scripts/setup.sh
-
-setup_test_env
-
 FILENAME="/etc/logrotate.d/packetfence"
 EXPECTED_OCTAL=644
 EXPECTED_OWNER="root.root"
@@ -48,7 +44,7 @@ else
     current=`cat $FILENAME`
 fi
 if [ "$current" != "$latest" ] ; then
-    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$pf_version'"
+    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION'"
     exit 1
 fi
 
