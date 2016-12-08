@@ -79,7 +79,7 @@ export -f dbparams
 
 pfversion() {
     PF_VERSION=($(awk '{ print $2 }' /usr/local/pf/conf/pf-release))
-    MAINTENANCE_VERSION="${pf_version%.*}"
+    MAINTENANCE_VERSION="${PF_VERSION%.*}"
     export PF_VERSION
     export MAINTENANCE_VERSION
 }
