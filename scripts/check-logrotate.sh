@@ -34,15 +34,9 @@ fi
 # Check for PacketFence logrotate script update against maintenance branch
 # Checks the '/etc/logrotate.d/packetfence' file
 pfversion
-osdetect
 base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
-if [ $DistroBasedOn == "redhat" ] ; then
-    latest=$(curl -s -L $base_url/addons/logrotate)
-    current=`cat $FILENAME`
-else
-    latest=$(curl -s -L $base_url/debian/packetfence.logrotate)
-    current=`cat $FILENAME`
-fi
+latest=$(curl -s -L $base_url/packetfence.logrotate)
+current=`cat $FILENAME`
 if [ "$current" != "$latest" ] ; then
     echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION'"
     exit 1
