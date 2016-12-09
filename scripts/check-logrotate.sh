@@ -25,6 +25,10 @@ fi
 
 # Check PacketFence logrotate script status
 # Checks the '/usr/local/pf/var/logrotate.status' file
+if ! [ -f /usr/local/pf/var/logrotate.status ]; then
+  echo "PacketFence logrotate status file does not exists"
+  exit 1
+fi
 error=($(awk '!/^0$/' /usr/local/pf/var/logrotate.status))
 if [ $error ]; then
     echo "PacketFence logrotate script '$FILENAME' exited with status '$error'"
