@@ -38,11 +38,11 @@ fi
 # Check for PacketFence logrotate script update against maintenance branch
 # Checks the '/etc/logrotate.d/packetfence' file
 pfversion
-base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
-latest=$(curl -s -L $base_url/packetfence.logrotate)
+latest_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION/packetfence.logrotate"
+latest=$(curl -s -L $latest_url)
 current=`cat $FILENAME`
 if [ "$current" != "$latest" ] ; then
-    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION'"
+    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION' which can be found at '$latest_url'"
     exit 1
 fi
 
