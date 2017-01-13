@@ -85,3 +85,23 @@ pfversion() {
 }
 
 export -f pfversion
+
+check_github_reachability() {
+    URLS='
+        https://raw.githubusercontent.com
+        https://github.com
+    '
+
+    for i in $URLS; do
+        RC=`wget --server-response $i 2>&1 | awk '/^  HTTP/{print $2}'`
+        if [[ "$RC" =~ "201" ]]; then
+            GITHUB_IS_REACHABLE="TRUE"
+        else
+            GITHUB_IS_REACHABLE="FALSE"
+        fi
+    done
+
+    export GITHUB_IS_REACHABLE
+}
+
+export -f check_github_reachability
