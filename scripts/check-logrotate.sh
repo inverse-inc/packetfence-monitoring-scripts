@@ -33,10 +33,10 @@ fi
 
 # Check for PacketFence logrotate script update against maintenance branch
 # Checks the '/etc/logrotate.d/packetfence' file
-check_github_reachability
-if [ "$GITHUB_IS_REACHABLE" != "TRUE" ]; then
+if ! github_is_reachable; then
     exit 0
 fi
+
 pfversion
 base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
 latest=$(curl -s -L $base_url/packetfence.logrotate)
