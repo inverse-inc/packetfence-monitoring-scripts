@@ -92,9 +92,8 @@ github_is_reachable() {
         https://github.com
     '
 
-    tmp=`mktemp`
     for i in $URLS; do
-        RC=`wget --server-response $i -O $tmp 2>&1 | awk '/^  HTTP/{print $2}'`
+        RC=`wget --server-response $i -O /dev/null 2>&1 | awk '/^  HTTP/{print $2}'`
         if [[ ! "$RC" =~ "200" ]]; then
             return 1
         fi
