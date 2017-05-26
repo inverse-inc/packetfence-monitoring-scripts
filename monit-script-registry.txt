@@ -10,3 +10,4 @@ http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-vm.s
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-sysctl.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-backups.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-logrotate.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2358.sh
