@@ -103,3 +103,14 @@ github_is_reachable() {
 }
 
 export -f github_is_reachable
+
+galera_enabled() {
+  if [ -f /var/lib/mysql/grastate.dat ];then
+    return 0
+  else
+    return 1
+  fi
+}
+
+export -f galera_enabled
+
