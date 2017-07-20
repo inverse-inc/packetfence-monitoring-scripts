@@ -13,3 +13,4 @@ http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-logr
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2358.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2388.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2440.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2502.sh
