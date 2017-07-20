@@ -11,8 +11,8 @@ if ! [ -z "$(command -v mysql)" ]; then
         MAX_CONN=`mysql -h $DB_HOST -u $DB_USER -p$DB_PWD -D $DB_NAME -e "show variables like 'max_connections'" | tail -1 | awk '{ print $2 }'`
         if [ $MAX_CONN -lt 1000 ]; then
           echo "You are using less than 1000 connections ($MAX_CONN) for MySQL while having Galera cluster enabled\n"
-          echo "This is know to cause potential issues under high load.\n"
-          echo "We suggest you up the amount of connections in database_advanced.max_connections and restart packetfence-mariadb"
+          echo "This is known to cause potential issues under high load.\n"
+          echo "We suggest you increase the amount of connections in database_advanced.max_connections and restart packetfence-mariadb"
           exit 1
         fi
         echo $MAX_CONN
