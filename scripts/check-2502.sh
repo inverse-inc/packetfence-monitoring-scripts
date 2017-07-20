@@ -3,7 +3,7 @@
 
 if ! [ -z "$(command -v mysql)" ]; then
 
-    # is MySQL running? meaning we are the live packetfence
+    # is MariaDB running? meaning we are the live packetfence
     # We check for the packetfence-mariadb PID which means only versions 7.0 and above will use this script
     if [ -f /var/lib/mysql/`hostname`.pid ]; then
         dbparams
