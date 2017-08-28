@@ -114,3 +114,10 @@ galera_enabled() {
 
 export -f galera_enabled
 
+cluster_members_count() {
+    CLUSTER_MEMBERS_COUNT=`perl -Ilib -Mpf::cluster -e 'print scalar @cluster_servers'`
+    export CLUSTER_MEMBERS_COUNT
+}
+
+export -f cluster_members_count
+
