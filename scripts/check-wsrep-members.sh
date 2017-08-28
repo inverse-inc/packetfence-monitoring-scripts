@@ -1,13 +1,6 @@
 #!/bin/bash
 #fname:check-wsrep-members.sh
 
-cluster_members_count() {
-    CLUSTER_MEMBERS_COUNT=`perl -Ilib -Mpf::cluster -e 'print scalar @cluster_servers'`
-    export CLUSTER_MEMBERS_COUNT
-}
-
-export -f cluster_members_count
-
 if ! [ -z "$(command -v mysql)" ]; then
 
     # is MariaDB running? meaning we are the live packetfence
