@@ -114,6 +114,13 @@ galera_enabled() {
 
 export -f galera_enabled
 
+cluster_members() {
+    CLUSTER_MEMBERS=`perl -Ilib -Mpf::cluster -e 'print join(", ", map { $_->{host} . ":" . $_->{management_ip} } @cluster_servers)'`
+    export CLUSTER_MEMBERS
+}
+
+export -f cluster_members_count
+
 cluster_members_count() {
     CLUSTER_MEMBERS_COUNT=`perl -Ilib -Mpf::cluster -e 'print scalar @cluster_servers'`
     export CLUSTER_MEMBERS_COUNT
@@ -121,3 +128,12 @@ cluster_members_count() {
 
 export -f cluster_members_count
 
+packetfence_mariadb_running() {
+    if [ -f /var/lib/mysql/`hostname`.pid ]; then
+        return 0
+    else 
+        return 1
+    fi
+}
+
+export -f packetfence_mariadb_running
