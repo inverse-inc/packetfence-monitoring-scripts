@@ -15,7 +15,7 @@ if ! [ -z "$(command -v mysql)" ]; then
         dbparams
         INNODB=`mysql -h $DB_HOST -u $DB_USER -p$DB_PWD -D $DB_NAME -e "select 1 from information_schema.GLOBAL_VARIABLES where VARIABLE_NAME=\"LOG_BIN\" and VARIABLE_VALUE=\"OFF\";"`
         if [ -z "$INNODB" ]; then
-            echo "BINARY LOG FILE is enabled"
+            echo "BINARY LOG FILE is enabled, it is suggested to disable this by commenting out log-bin=mysql-bin in /usr/local/pf/conf/mariadb/mariadb.conf.tt and restarting packetfence-mariadb"
             exit 1
         fi
     fi
