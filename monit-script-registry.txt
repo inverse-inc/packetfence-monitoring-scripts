@@ -15,3 +15,5 @@ http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2388
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2440.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-2502.sh
 http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-wsrep-members.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-mysql-binary-log.sh
+http://inverse.ca/downloads/PacketFence/monitoring-scripts/v1/scripts/check-epel.sh
