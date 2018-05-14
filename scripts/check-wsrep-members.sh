@@ -8,6 +8,7 @@ if ! [ -z "$(command -v mysql)" ]; then
     # We also check if Galera is enabled
     if packetfence_mariadb_running && galera_enabled; then
         dbparams
+        cluster_members
         cluster_members_count
         MEMBERS=`mysql -h $DB_HOST -u $DB_USER -p$DB_PWD -D $DB_NAME -s -N -e "show status like 'wsrep_incoming_addresses';" | awk '{ print $2 }'`
         COUNT=`grep -o ',' <<< $MEMBERS | wc -l`
