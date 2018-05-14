@@ -13,6 +13,7 @@ if ! [ -z "$(command -v mysql)" ]; then
           echo "You are using less than 1000 connections ($MAX_CONN) for MySQL while having Galera cluster enabled\n"
           echo "This is known to cause potential issues under high load.\n"
           echo "We suggest you increase the amount of connections in database_advanced.max_connections and restart packetfence-mariadb"
+          echo "On top of this, you should also, update the systemd unit file using the following command: curl https://raw.githubusercontent.com/inverse-inc/packetfence/devel/conf/systemd/packetfence-mariadb.service > /usr/lib/systemd/system/packetfence-mariadb.service && systemctl daemon-reload && systemctl restart packetfence-mariadb"
           exit 1
         fi
     fi
