@@ -119,7 +119,7 @@ cluster_members() {
     export CLUSTER_MEMBERS
 }
 
-export -f cluster_members_count
+export -f cluster_members
 
 cluster_members_count() {
     CLUSTER_MEMBERS_COUNT=`perl -Ilib -Mpf::cluster -e 'print scalar @cluster_servers'`
