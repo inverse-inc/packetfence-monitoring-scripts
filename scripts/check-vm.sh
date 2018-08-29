@@ -22,8 +22,5 @@ if [ $DistroBasedOn == "redhat" ]; then
        if dmesg |grep -i "Hypervisor detected" | grep -q "Microsoft HyperV"; then
           echo "You are running on a Microsoft HyperV Hypervisor."
        fi
-   else
-       echo "Hypervisor detection failed"
-       exit 1
    fi
 fi
