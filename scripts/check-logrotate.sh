@@ -25,6 +25,10 @@ fi
 
 # Check PacketFence logrotate script status
 # Checks the '/usr/local/pf/var/logrotate.status' file
+if ! [ -f /usr/local/pf/var/logrotate.status ]; then
+  echo "PacketFence logrotate status file does not exists"
+  exit 1
+fi
 error=($(awk '!/^0$/' /usr/local/pf/var/logrotate.status))
 if [ $error ]; then
     echo "PacketFence logrotate script '$FILENAME' exited with status '$error'"
@@ -38,11 +42,11 @@ if ! github_is_reachable; then
 fi
 
 pfversion
-base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
-latest=$(curl -s -L $base_url/packetfence.logrotate)
+latest_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION/packetfence.logrotate"
+latest=$(curl -s -L $latest_url)
 current=`cat $FILENAME`
 if [ "$current" != "$latest" ] ; then
-    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION'"
+    echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION' which can be found at '$latest_url'"
     exit 1
 fi
 
