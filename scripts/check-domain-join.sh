@@ -30,7 +30,6 @@ function check_domain_join {
             echo "$domain domain: wbinfo -t failed";
             error=1
         fi
-    done
 }
 
 if [ "$CHECK_CHROOT_JOIN" -eq 1 ]; then
