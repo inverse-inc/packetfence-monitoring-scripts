@@ -40,6 +40,11 @@ fi
 pfversion
 base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
 latest=$(curl -s -L $base_url/packetfence.logrotate)
+if [ $? -ne 0 ]; then
+  echo "Failed to reach $base_url to fetch latest logrotate file."
+  exit 0
+fi
+
 current=`cat $FILENAME`
 if [ "$current" != "$latest" ] ; then
     echo "PacketFence logrotate script '$FILENAME' is not up to date compared to maintenance for '$PF_VERSION'"
