@@ -3,7 +3,7 @@
 
 # handle PF versions v10 and later
 if grep advanced.configurator /usr/local/pf/conf/pf.conf.defaults; then
-    if ! egrep "^configurator[[:blank:]]=[[:blank:]]?disabled" /usr/local/pf/conf/pf.conf ; then
+    if ! egrep "^configurator[[:blank:]]?=[[:blank:]]?disabled" /usr/local/pf/conf/pf.conf ; then
         echo "Configurator opened. Disable access by setting configurator=disabled in pf.conf"
         exit 1
     fi
