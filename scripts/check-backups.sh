@@ -41,3 +41,18 @@ fi
 
 rm $ERROR_FILE
 
+# Test for status of files and database backups (/usr/local/pf/addons/database-backup-and-maintenance.sh)
+statusFiles=( "/usr/local/pf/var/backup_files.status" "/usr/local/pf/var/backup_db.status" )
+for i in "${statusFiles[@]}"
+do
+if ! [ -f $i ]; then
+  echo "PacketFence backup status file '$i' does not exists"
+  exit 1
+fi
+error=($(awk '!/^OK$/' $i))
+if [ $error ]; then
+    echo "$(cat $i)"
+    exit 1
+fi
+done
+
