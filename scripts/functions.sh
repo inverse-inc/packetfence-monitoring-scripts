@@ -65,10 +65,10 @@ osdetect(){
 export -f osdetect
 
 dbparams(){
-    DB_USER=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{user}')
-    DB_PWD=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{pass}')
-    DB_NAME=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{db}')
-    DB_HOST=$(perl -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{host}')
+    DB_USER=$(perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{user}')
+    DB_PWD=$(perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{pass}')
+    DB_NAME=$(perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{db}')
+    DB_HOST=$(perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::db -e 'print $pf::db::DB_Config->{host}')
     export DB_USER
     export DB_PWD
     export DB_NAME
@@ -115,14 +115,14 @@ galera_enabled() {
 export -f galera_enabled
 
 cluster_members() {
-    CLUSTER_MEMBERS=`perl -I/usr/local/pf/lib -Mpf::cluster -e 'print join(", ", map { $_->{host} . ":" . $_->{management_ip} } @cluster_servers)'`
+    CLUSTER_MEMBERS=`perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::cluster -e 'print join(", ", map { $_->{host} . ":" . $_->{management_ip} } @cluster_servers)'`
     export CLUSTER_MEMBERS
 }
 
 export -f cluster_members
 
 cluster_members_count() {
-    CLUSTER_MEMBERS_COUNT=`perl -I/usr/local/pf/lib -Mpf::cluster -e 'print scalar @cluster_servers'`
+    CLUSTER_MEMBERS_COUNT=`perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::cluster -e 'print scalar @cluster_servers'`
     export CLUSTER_MEMBERS_COUNT
 }
 
