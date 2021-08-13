@@ -25,6 +25,16 @@ function check_backups {
   done
 }
 
+function check_folder_status {
+    if [ -d "$BACKUP_DIR" ]; then
+        find $BACKUP_DIR -maxdepth 0 -empty -exec echo "1" \; > $ERROR_FILE
+    else
+        echo "$BACKUP_DIR doesn't exist or is not a directory"
+        echo "1" > $ERROR_FILE        
+    fi
+}
+    
+
 if [ $BACKUP_CHECK_FILES -eq 1 ]; then
   check_backups 'packetfence-files-dump-*'
 fi
@@ -32,6 +42,8 @@ fi
 if [ $BACKUP_CHECK_DB_DUMP -eq 1 ]; then 
   check_backups 'packetfence-db-dump-*'
 fi
+
+check_folder_status
 
 if [ `cat $ERROR_FILE` -ne 0 ]; then
   echo "One or more backup files are problematic"
