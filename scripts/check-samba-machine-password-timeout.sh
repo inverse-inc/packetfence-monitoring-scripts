@@ -1,7 +1,7 @@
 #!/bin/bash
 #fname:check-samba-machine-password-timeout.sh
 
-domains=`perl -I/usr/local/pf/lib -Mpf::config -e "print join(' ', keys(%pf::config::ConfigDomain))"`
+domains=`perl -I/usr/local/pf/lib_perl/lib/perl5 -I/usr/local/pf/lib -Mpf::config -e "print join(' ', keys(%pf::config::ConfigDomain))"`
 
 error=0
 
