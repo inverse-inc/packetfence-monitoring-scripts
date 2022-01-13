@@ -93,7 +93,7 @@ github_is_reachable() {
     '
 
     for i in $URLS; do
-        RC=`wget --server-response $i -O /dev/null 2>&1 | awk '/^  HTTP/{print $2}'`
+        RC=`timeout 5 wget --server-response $i -O /dev/null 2>&1 | awk '/^  HTTP/{print $2}'`
         if [[ ! "$RC" =~ "200" ]]; then
             return 1
         fi
