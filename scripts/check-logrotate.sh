@@ -34,12 +34,13 @@ fi
 # Check for PacketFence logrotate script update against maintenance branch
 # Checks the '/etc/logrotate.d/packetfence' file
 if ! github_is_reachable; then
+    echo "WARNING: Github is not reachable, skipping logrotate check"
     exit 0
 fi
 
 pfversion
 base_url="https://raw.githubusercontent.com/inverse-inc/packetfence/maintenance/$MAINTENANCE_VERSION"
-latest=$(curl -s -L $base_url/packetfence.logrotate)
+latest=$(timeout 5 curl -s -L $base_url/packetfence.logrotate)
 if [ $? -ne 0 ]; then
   echo "Failed to reach $base_url to fetch latest logrotate file."
   exit 0
